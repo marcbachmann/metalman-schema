@@ -1,0 +1,35 @@
+{
+  "name": "metalman-schema",
+  "version": "1.0.0",
+  "description": "A JSON schema validation middleware for the metalman module.",
+  "keywords": [
+    "metalman",
+    "middleware",
+    "json",
+    "schema",
+    "json schema",
+    "validation",
+    "validate"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && node test.js"
+  },
+  "author": "Marc Bachmann <marc.brookman@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "metalman": "^1.0.1",
+    "standard": "^8.5.0"
+  },
+  "dependencies": {
+    "ajv": "^4.8.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcbachmann/metalman-schema.git"
+  },
+  "bugs": {
+    "url": "https://github.com/marcbachmann/metalman-schema/issues"
+  },
+  "homepage": "https://github.com/marcbachmann/metalman-schema#readme"
+}
