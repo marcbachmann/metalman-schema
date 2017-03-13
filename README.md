@@ -1,5 +1,7 @@
 # metalman-schema
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/marcbachmann/metalman-schema.svg)](https://greenkeeper.io/)
+
 A JSON schema validation middleware for the metalman module.
 
 
