@@ -1,6 +1,6 @@
 {
   "name": "metalman-schema",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A JSON schema validation middleware for the metalman module.",
   "keywords": [
     "metalman",
