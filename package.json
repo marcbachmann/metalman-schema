@@ -22,7 +22,7 @@
     "standard": "^11.0.0"
   },
   "dependencies": {
-    "ajv": "^5.0.0"
+    "ajv": "^6.6.0"
   },
   "repository": {
     "type": "git",
