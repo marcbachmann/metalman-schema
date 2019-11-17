@@ -18,7 +18,7 @@
   "author": "Marc Bachmann <marc.brookman@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "metalman": "^2.0.1",
+    "metalman": "^3.0.0",
     "standard": "^11.0.0"
   },
   "dependencies": {
