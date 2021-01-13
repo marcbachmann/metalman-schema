@@ -6,7 +6,8 @@ defaultValidationMiddleware.factory = validationMiddlewareFactory
 
 function defaultValidationMiddleware (config) {
   return validationMiddlewareFactory({
-    ajvOptions: {useDefaults: true, jsonPointers: true, allErrors: false},
+    ajv: undefined,
+    ajvOptions: {useDefaults: true, jsonPointers: true, allErrors: false, coerceTypes: true},
     transform: transformErrors
   })(config)
 }
