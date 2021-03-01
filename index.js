@@ -1,5 +1,5 @@
 const util = require('util')
-const AJV = require('ajv')
+const AJV = require('ajv').default
 
 module.exports = defaultValidationMiddleware
 defaultValidationMiddleware.factory = validationMiddlewareFactory
@@ -7,7 +7,7 @@ defaultValidationMiddleware.factory = validationMiddlewareFactory
 function defaultValidationMiddleware (config) {
   return validationMiddlewareFactory({
     ajv: undefined,
-    ajvOptions: {useDefaults: true, jsonPointers: true, allErrors: false, coerceTypes: true},
+    ajvOptions: {useDefaults: true, allErrors: false, coerceTypes: true},
     transform: transformErrors
   })(config)
 }
