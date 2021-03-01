@@ -9,7 +9,8 @@ var fn = command({
     required: ['foo'],
     additionalProperties: false,
     properties: {
-      foo: {type: 'number'}
+      foo: {type: 'number'},
+      bar: {type: 'string', format: 'uri'}
     }
   }
 })
@@ -17,8 +18,8 @@ var fn = command({
 // Missing property
 fn({}, function (err) {
   assert.ok(err instanceof Error)
-  assert.equal(err.name, 'ValidationError')
-  assert.equal(err.message, "Value at path '' should have required property 'foo'")
+  assert.strictEqual(err.name, 'ValidationError')
+  assert.strictEqual(err.message, "Value at path '' should have required property 'foo'")
   assert.ok(err.stack)
   assert.ok(Array.isArray(err.errors))
 })
@@ -26,14 +27,17 @@ fn({}, function (err) {
 // Wrong type
 fn({foo: 'bar'}, function (err) {
   assert.ok(err)
-  assert.equal(err.message, "Value at path '/foo' should be number")
+  assert.strictEqual(err.message, "Value at path '/foo' should be number")
 })
 
 // Additional property
 fn({foo: 1, test: 'bar'}, function (err) {
   assert.ok(err)
-  assert.equal(err.message, "Value at path '' should NOT have additional properties")
+  assert.strictEqual(err.message, "Value at path '' should NOT have additional properties")
 })
 
 // Success
 fn({foo: 1}, assert.ifError)
+
+// Default formats get registered if no custom ajv instance is used
+fn({foo: 1, bar: 'https://example.com'}, assert.ifError)
