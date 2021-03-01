@@ -1,5 +1,4 @@
 const util = require('util')
-const AJV = require('ajv').default
 
 module.exports = defaultValidationMiddleware
 defaultValidationMiddleware.factory = validationMiddlewareFactory
@@ -14,12 +13,16 @@ function defaultValidationMiddleware (config) {
 
 function validationMiddlewareFactory (opts) {
   const transform = opts.transform || transformErrors
-  const ajv = opts.ajv || new AJV(opts.ajvOptions)
+  if (!opts.ajv) {
+    const AJV = require('ajv').default
+    opts.ajv = new AJV(opts.ajvOptions)
+    require('ajv-formats')(opts.ajv)
+  }
 
   return function schemaValidationMiddleware (config) {
     if (typeof config.schema !== 'object') return
 
-    const validator = ajv.compile(config.schema)
+    const validator = opts.ajv.compile(config.schema)
     return function validate (cmd) {
       if (validator(cmd)) return cmd
       throw transform(validator.errors)
