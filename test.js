@@ -30,7 +30,7 @@ fn({foo: 'bar'}, function (err) {
 })
 
 // Additional property
-fn({test: 'bar'}, function (err) {
+fn({foo: 1, test: 'bar'}, function (err) {
   assert.ok(err)
   assert.equal(err.message, "Value at path '' should NOT have additional properties")
 })
