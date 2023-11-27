@@ -24,7 +24,7 @@ function validationMiddlewareFactory (opts) {
 
     const validator = opts.ajv.compile(config.schema)
     return function validate (cmd) {
-      if (validator(cmd)) return cmd
+      if (validator(cmd)) return
       throw transform(validator.errors)
     }
   }
