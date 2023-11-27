@@ -39,5 +39,11 @@ fn({foo: 1, test: 'bar'}, function (err) {
 // Success
 fn({foo: 1}, assert.ifError)
 
+// Does not mutate respond value
+fn({foo: 1}, function (err, res) {
+  assert.ifError(err)
+  assert.strictEqual(res, undefined)
+})
+
 // Default formats get registered if no custom ajv instance is used
 fn({foo: 1, bar: 'https://example.com'}, assert.ifError)
